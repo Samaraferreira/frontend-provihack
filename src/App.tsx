@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles/global.css'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
-import { Home } from './pages'
+import Routes from './routes'
 
 function App () {
   const theme = createMuiTheme({
@@ -32,7 +32,7 @@ function App () {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <Routes />
     </ThemeProvider>
   )
 }
