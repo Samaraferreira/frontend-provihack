@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, CardCase, Header } from '../../components'
 import { ChallengeType } from '../../services/challengeType'
 import api from '../../services/api'
+import CardCase from '../../components/card-case'
+import Header from '../../components/header'
+import Button from '../../components/button'
 
 import Image1 from '../../assets/image1.svg'
 import Image2 from '../../assets/image2.svg'
