@@ -4,9 +4,9 @@ import './styles.css'
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button: React.FC<Props> = ({ children }: Props) => {
+const Button: React.FC<Props> = ({ children, ...props }: Props) => {
   return (
-    <button className="primary-btn">
+    <button {...props} className={`primary-btn ${props.className}`}>
       {children}
     </button>
   )

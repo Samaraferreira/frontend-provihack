@@ -21,14 +21,15 @@
 }
 
 .filters select {
-  background: #F2F2F2;
+  background: var(--white-1);
   border-radius: 5px;
   height: 48px;
   border: 0;
   /* margin: 4px; */
   width: 100%;
   max-width: 400px;
-  padding: 10px 16px;
+  padding: 8px 16px;
+  font-size: 16px;
 }
 
 .filters select + select {

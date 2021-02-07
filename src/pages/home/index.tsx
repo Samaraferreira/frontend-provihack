@@ -11,9 +11,11 @@ import Image2 from '../../assets/image2.svg'
 import Image3 from '../../assets/image3.svg'
 import MainImage from '../../assets/main.svg'
 import './styles.css'
+import ModalRegister from '../../components/modal-register'
 
 const Home: React.FC = () => {
   const [challenges, setChallenges] = useState<ChallengeType[]>([])
+  const [openModal, setOpenModal] = useState(false)
 
   useEffect(() => {
     async function load () {
@@ -25,6 +27,7 @@ const Home: React.FC = () => {
 
   return (
     <>
+      {openModal && <ModalRegister close={setOpenModal} />}
       <Header />
       <main className="home-container">
         <section className="top">
@@ -37,7 +40,7 @@ const Home: React.FC = () => {
               Assim sua transição de carreira fica ainda mais rápida.
             </p>
             <div className="top__buttons">
-              <button className="register-btn">CRIAR CONTA</button>
+              <button className="register-btn" onClick={() => setOpenModal(true)}>CRIAR CONTA</button>
               <Link to="/challenges" className="cases-btn">
                 VER DESAFIOS
               </Link>
