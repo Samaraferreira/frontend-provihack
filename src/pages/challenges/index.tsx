@@ -1,25 +1,42 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import api from '../../services/api'
 import ChallengeType from '../../services/challengeType'
 import CardCase from '../../components/card-case'
 import Header from '../../components/header'
 
 import './styles.css'
-import { Link } from 'react-router-dom'
+export interface RouteParams {
+  field: string
+}
 
 const Challenges: React.FC = () => {
   const [challenges, setChallenges] = useState<ChallengeType[]>([])
   const [fields, setFields] = useState([])
   const [apps, setApps] = useState([])
   const [languages, setLanguages] = useState([])
-  const [selectedField, setSelectedField] = useState('')
+  const [selectedField, setSelectedField] = useState('default')
+
+  const { field } = useParams<RouteParams>()
+
+  useEffect(() => {
+    async function load () {
+      const response = await api.get(`challenges/${field}`)
+      setChallenges(response.data.data)
+    }
+    if (!selectedField) {
+      load()
+    }
+  }, [])
 
   useEffect(() => {
     async function load () {
       const response = await api.get(`challenges/${selectedField}`)
       setChallenges(response.data.data)
     }
-    load()
+    if (selectedField !== 'default') {
+      load()
+    }
   }, [selectedField])
 
   useEffect(() => {
@@ -54,7 +71,7 @@ const Challenges: React.FC = () => {
 
         <section className="filters">
           <select onChange={(e) => setSelectedField(e.target.value)}>
-            <option value="">Áreas de atuação</option>
+            <option value="" >Áreas de atuação</option>
             {fields.map(field => (
               <option key={field} value={field}>{field}</option>
             ))}

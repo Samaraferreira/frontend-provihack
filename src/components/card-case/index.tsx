@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ChallengeType from '../../services/challengeType'
 
 import './styles.css'
@@ -23,9 +24,9 @@ const CardCase: React.FC<Props> = ({ challenge }: Props) => {
         <p className="about__description">
           {challenge.description}
         </p>
-        <a className="card-case__link" href="/">
+        <Link className="card-case__link" to={`/challenge/${challenge.id}`}>
           Acessar case
-        </a>
+        </Link>
       </div>
     </li>
   )

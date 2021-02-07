@@ -41,7 +41,7 @@ const Home: React.FC = () => {
             </p>
             <div className="top__buttons">
               <button className="register-btn" onClick={() => setOpenModal(true)}>CRIAR CONTA</button>
-              <Link to="/challenges" className="cases-btn">
+              <Link to="/categories" className="cases-btn">
                 VER DESAFIOS
               </Link>
             </div>
@@ -93,7 +93,9 @@ const Home: React.FC = () => {
             {challenges.map((challenge, index) => {
               if (index < 3) {
                 return (
-                  <CardCase key={challenge.id} challenge={challenge} />
+                  <Link key={challenge.id} to={`/challenge/${challenge.id}`}>
+                    <CardCase challenge={challenge} />
+                  </Link>
                 )
               }
               return null
