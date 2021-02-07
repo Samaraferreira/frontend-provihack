@@ -33,5 +33,8 @@ footer {
   background: #6045E4;
   width: 100%;
   height: 142px;
-  margin-top: 32px;
+}
+
+a {
+  text-decoration: none;
 }
