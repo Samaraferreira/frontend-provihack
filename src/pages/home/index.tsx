@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ChallengeType } from '../../services/challengeType'
+import ChallengeType from '../../services/challengeType'
 import api from '../../services/api'
 import CardCase from '../../components/card-case'
 import Header from '../../components/header'

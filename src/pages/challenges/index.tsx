@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { ChallengeType } from '../../services/challengeType'
+import ChallengeType from '../../services/challengeType'
 import CardCase from '../../components/card-case'
 import Header from '../../components/header'
 

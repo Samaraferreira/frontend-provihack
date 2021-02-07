@@ -1,4 +1,4 @@
-export type ChallengeType = {
+interface ChallengeType {
   id: number,
   company_id: number,
   title: string,
@@ -9,3 +9,5 @@ export type ChallengeType = {
   category: string,
   description: string
 }
+
+export default ChallengeType

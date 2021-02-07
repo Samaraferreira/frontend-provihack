@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import api from '../../services/api'
-import { ChallengeType } from '../../services/challengeType'
+import ChallengeType from '../../services/challengeType'
 import Header from '../../components/header'
 
 import Image from '../../assets/online.svg'
