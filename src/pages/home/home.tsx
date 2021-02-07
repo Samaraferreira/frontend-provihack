@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Button, CardCase, Header } from '../../components'
+import { ChallengeType } from '../../services/ChallengeType'
+import api from '../../services/api'
 
 import Image1 from '../../assets/image1.svg'
 import Image2 from '../../assets/image2.svg'
@@ -8,6 +11,16 @@ import MainImage from '../../assets/main.svg'
 import './styles.css'
 
 const Home: React.FC = () => {
+  const [challenges, setChallenges] = useState<ChallengeType[]>([])
+
+  useEffect(() => {
+    async function load () {
+      const response = await api.get('challenges/dev')
+      setChallenges(response.data.data)
+    }
+    load()
+  }, [])
+
   return (
     <>
       <Header />
@@ -23,7 +36,9 @@ const Home: React.FC = () => {
             </p>
             <div className="top__buttons">
               <button className="register-btn">CRIAR CONTA</button>
-              <button className="cases-btn">VER DESAFIOS</button>
+              <Link to="/challenges" className="cases-btn">
+                VER DESAFIOS
+              </Link>
             </div>
           </div>
         </section>
@@ -70,11 +85,17 @@ const Home: React.FC = () => {
             Todos contam com um briefing estruturados por empresas e ongs reais.
           </span>
           <ul className="list-cards">
-            <CardCase />
-            <CardCase />
-            <CardCase />
+            {challenges.map((challenge, index) => {
+              if (index < 3) {
+                return (
+                  <CardCase key={challenge.id} challenge={challenge} />
+                )
+              }
+            })}
           </ul>
-          <button className="load-all-btn">ACESSAR TODOS OS DESAFIOS</button>
+          <Link to="/challenges" className="load-all-btn">
+            ACESSAR TODOS OS DESAFIOS
+          </Link>
         </section>
       </main>
       <footer>
