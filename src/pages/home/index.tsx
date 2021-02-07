@@ -19,7 +19,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     async function load () {
-      const response = await api.get('challenges/dev')
+      const response = await api.get('challenges')
       setChallenges(response.data.data)
     }
     load()
@@ -81,7 +81,7 @@ const Home: React.FC = () => {
               </p>
             </div>
           </div>
-          <Button>CRIAR CONTA</Button>
+          <Button onClick={() => setOpenModal(true)}>CRIAR CONTA</Button>
         </section>
         <section className="cases">
           <h2 className="cases__title">Veja alguns cases</h2>

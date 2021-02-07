@@ -5,19 +5,18 @@ import CardCase from '../../components/card-case'
 import Header from '../../components/header'
 
 import './styles.css'
+import { Link } from 'react-router-dom'
 
 const Challenges: React.FC = () => {
   const [challenges, setChallenges] = useState<ChallengeType[]>([])
-  // const [fields, setFields] = useState([])
-  // const [apps, setApps] = useState([])
-  // const [languages, setLanguages] = useState([])
-  const [selectedField, setSelectedField] = useState('ui')
-  const [selectedApp, setSelectedApp] = useState('')
-  const [selectedLanguages, setSelectedLanguages] = useState('')
+  const [fields, setFields] = useState([])
+  const [apps, setApps] = useState([])
+  const [languages, setLanguages] = useState([])
+  const [selectedField, setSelectedField] = useState('')
 
   useEffect(() => {
     async function load () {
-      const response = await api.get('challenges/dev')
+      const response = await api.get(`challenges/${selectedField}`)
       setChallenges(response.data.data)
     }
     load()
@@ -26,9 +25,23 @@ const Challenges: React.FC = () => {
   useEffect(() => {
     async function load () {
       const response = await api.get('fields')
-      console.log(response.data.data)
-      console.log(selectedApp, selectedLanguages)
-      // setChallenges()
+      setFields(response.data.data)
+    }
+    load()
+  }, [])
+
+  useEffect(() => {
+    async function load () {
+      const response = await api.get('apps')
+      setApps(response.data.data)
+    }
+    load()
+  }, [])
+
+  useEffect(() => {
+    async function load () {
+      const response = await api.get('languages')
+      setLanguages(response.data.data)
     }
     load()
   }, [])
@@ -42,20 +55,29 @@ const Challenges: React.FC = () => {
         <section className="filters">
           <select onChange={(e) => setSelectedField(e.target.value)}>
             <option value="">Áreas de atuação</option>
-            <option value="ui">Ui</option>
-            <option value="frontend">Frontend</option>
+            {fields.map(field => (
+              <option key={field} value={field}>{field}</option>
+            ))}
           </select>
-          <select onChange={(e) => setSelectedApp(e.target.value)}>
+          <select disabled>
             <option value="">Linguagens</option>
+            {languages.map(language => (
+              <option key={language} value={language}>{language}</option>
+            ))}
           </select>
-          <select onChange={(e) => setSelectedLanguages(e.target.value)}>
+          <select disabled>
             <option value="">Ferramentas</option>
+            {apps.map(app => (
+              <option key={app} value={app}>{app}</option>
+            ))}
           </select>
         </section>
 
         <ul className="list-challenges">
           {challenges.map((challenge: ChallengeType) => (
-            <CardCase key={challenge.id} challenge={challenge} />
+            <Link key={challenge.id} to={`/challenge/${challenge.id}`}>
+              <CardCase challenge={challenge} />
+            </Link>
           ))}
         </ul>
       </main>
