@@ -16,6 +16,7 @@ const ModalRegister: React.FC<Props> = ({ close }: Props) => {
   const [email, setEmail] = useState('')
   const [role, setRole] = useState('')
   const [password, setPassword] = useState('')
+  const [background, setBackground] = useState('')
 
   useEffect(() => {
     async function load () {
@@ -32,6 +33,7 @@ const ModalRegister: React.FC<Props> = ({ close }: Props) => {
       thumbnail: '',
       email,
       password,
+      background,
       name,
       role,
       about: '',
@@ -66,6 +68,10 @@ const ModalRegister: React.FC<Props> = ({ close }: Props) => {
           <div className="input-block">
             <label htmlFor="">Email</label>
             <input type="email" onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="input-block">
+            <label htmlFor="">Qual o seu background?</label>
+            <input type="email" onChange={(e) => setBackground(e.target.value)} />
           </div>
           <div className="input-block">
             <label htmlFor="">Área para qual está migrando</label>

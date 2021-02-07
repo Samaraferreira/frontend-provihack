@@ -50,6 +50,7 @@
   line-height: 24px;
   color: #6045E4;
   letter-spacing: 0.15px;
+  display: none;
 }
 
 .form {

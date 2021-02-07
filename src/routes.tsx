@@ -11,7 +11,8 @@ const Routes: React.FC = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/categories" component={Categories} />
-        <Route path="/challenges/:field" component={Challenges} />
+        {/* <Route path="/challenges/:field" component={Challenges} /> */}
+        <Route path="/challenges" component={Challenges} />
         <Route path="/challenge/:id" component={Challenge} />
       </Switch>
     </BrowserRouter>

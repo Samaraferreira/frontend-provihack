@@ -41,7 +41,7 @@ const Home: React.FC = () => {
             </p>
             <div className="top__buttons">
               <button className="register-btn" onClick={() => setOpenModal(true)}>CRIAR CONTA</button>
-              <Link to="/categories" className="cases-btn">
+              <Link to="/challenges" className="cases-btn">
                 VER DESAFIOS
               </Link>
             </div>

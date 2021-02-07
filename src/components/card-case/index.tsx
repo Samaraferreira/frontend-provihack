@@ -11,7 +11,7 @@ type Props = {
 const CardCase: React.FC<Props> = ({ challenge }: Props) => {
   return (
     <li className="card-case">
-      <img src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/lex_migration_whatsnew/lex_migration_whatsnew_service/images/5558bdc6b5223692311896b4de80571c_console-lex-service.png" alt=""/>
+      {challenge.thumbnail && <img src={challenge.thumbnail} alt=""/>}
       <div className="card-case__about">
         <div className="about__header">
           <h3 className="about__title">

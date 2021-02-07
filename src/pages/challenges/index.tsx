@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import ChallengeType from '../../services/challengeType'
 import CardCase from '../../components/card-case'
@@ -15,28 +15,28 @@ const Challenges: React.FC = () => {
   const [fields, setFields] = useState([])
   const [apps, setApps] = useState([])
   const [languages, setLanguages] = useState([])
-  const [selectedField, setSelectedField] = useState('default')
+  const [selectedField, setSelectedField] = useState('')
 
-  const { field } = useParams<RouteParams>()
+  // const { field } = useParams<RouteParams>()
 
-  useEffect(() => {
-    async function load () {
-      const response = await api.get(`challenges/${field}`)
-      setChallenges(response.data.data)
-    }
-    if (!selectedField) {
-      load()
-    }
-  }, [])
+  // useEffect(() => {
+  //   async function load () {
+  //     const response = await api.get(`challenges/${field}`)
+  //     setChallenges(response.data.data)
+  //   }
+  //   if (selectedField === 'default') {
+  //     load()
+  //   }
+  // }, [])
 
   useEffect(() => {
     async function load () {
       const response = await api.get(`challenges/${selectedField}`)
       setChallenges(response.data.data)
     }
-    if (selectedField !== 'default') {
-      load()
-    }
+    // if (selectedField !== 'default') {
+    load()
+    // }
   }, [selectedField])
 
   useEffect(() => {

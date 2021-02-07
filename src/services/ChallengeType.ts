@@ -7,7 +7,8 @@ interface ChallengeType {
   date_added: string,
   expiration_date: string,
   category: string,
-  description: string
+  description: string,
+  thumbnail: string
 }
 
 export default ChallengeType
