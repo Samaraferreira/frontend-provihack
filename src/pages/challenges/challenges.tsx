@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Button, CardCase, Header } from '../../components'
+import { CardCase, Header } from '../../components'
 import api from '../../services/api'
-import { ChallengeType } from '../../services/ChallengeType'
+import { ChallengeType } from '../../services/challengeType'
 
 import './styles.css'
 
 const Challenges: React.FC = () => {
   const [challenges, setChallenges] = useState<ChallengeType[]>([])
-  const [fields, setFields] = useState([])
-  const [apps, setApps] = useState([])
-  const [languages, setLanguages] = useState([])
+  // const [fields, setFields] = useState([])
+  // const [apps, setApps] = useState([])
+  // const [languages, setLanguages] = useState([])
   const [selectedField, setSelectedField] = useState('ui')
-  const [selectedApps, setSelectedApps] = useState('')
+  const [selectedApp, setSelectedApp] = useState('')
   const [selectedLanguages, setSelectedLanguages] = useState('')
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const Challenges: React.FC = () => {
     async function load () {
       const response = await api.get('fields')
       console.log(response.data.data)
+      console.log(selectedApp, selectedLanguages)
       // setChallenges()
     }
     load()
@@ -43,7 +44,7 @@ const Challenges: React.FC = () => {
             <option value="ui">Ui</option>
             <option value="frontend">Frontend</option>
           </select>
-          <select onChange={(e) => setSelectedApps(e.target.value)}>
+          <select onChange={(e) => setSelectedApp(e.target.value)}>
             <option value="">Linguagens</option>
           </select>
           <select onChange={(e) => setSelectedLanguages(e.target.value)}>

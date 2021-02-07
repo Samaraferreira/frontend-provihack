@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, CardCase, Header } from '../../components'
-import { ChallengeType } from '../../services/ChallengeType'
+import { ChallengeType } from '../../services/challengeType'
 import api from '../../services/api'
 
 import Image1 from '../../assets/image1.svg'
@@ -91,6 +91,7 @@ const Home: React.FC = () => {
                   <CardCase key={challenge.id} challenge={challenge} />
                 )
               }
+              return null
             })}
           </ul>
           <Link to="/challenges" className="load-all-btn">

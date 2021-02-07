@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChallengeType } from '../../services/ChallengeType'
+import { ChallengeType } from '../../services/challengeType'
 
 import './styles.css'
 
