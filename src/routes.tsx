@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Home, Challenges } from './pages'
+import Challenges from './pages/challenges'
+import Home from './pages/home'
 
 const Routes: React.FC = () => {
   return (
