@@ -91,6 +91,7 @@ const Home: React.FC = () => {
                   <CardCase key={challenge.id} challenge={challenge} />
                 )
               }
+              return null
             })}
           </ul>
           <Link to="/challenges" className="load-all-btn">
