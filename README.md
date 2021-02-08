@@ -2,6 +2,8 @@
 
 front-end for the project developed during the provi hack woman hackathon
 
+demo: https://maonamassa.netlify.app/
+
 ## technologies
 
 - typescript
